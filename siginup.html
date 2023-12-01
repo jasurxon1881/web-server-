@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sign Up Smart trip</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Capriola" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Capriola|Nosifer" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Knewave" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gabriela" rel="stylesheet">
+    <!-- p -->
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <!-- submit -->
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+</head>
+<body>
+  <style media="screen">
+    body {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://images.unsplash.com/photo-1682685797365-41f45b562c0a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size:cover;
+    background-position: center;
+    margin-left: 45%;
+    height: 100vh;
+}
+h1 {
+	color: #f23f45;
+	font-size: 48px;
+	text-align: center;
+	font-family: cursive;
+}
+
+.sigin {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 370px;
+	height: 550px;
+	padding: 35px;
+	box-sizing: border-box;
+	background-color: rgba(0, 0, 0, .7);
+	border-radius: 6px;
+	box-shadow:0 2px 35px 4px #0a0a0a;
+}
+
+.box {
+	color: #FFF;
+}
+
+.box p {
+	font-family: 'Lobster', cursive;
+}
+
+.sigin input[type="email"],
+.sigin input[type="text"],
+.sigin input[type="text"],
+.sigin input[type="Password"] {
+	border: none;
+	width: 100%;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline: none;
+	height: 20px;
+	color: #FFF;
+	font-size: 20px;
+	font-family: 'Gabriela', serif;
+}
+
+.submit {
+	width: 100%;
+    height: 35px;
+    font-size: 20px;
+    color: #fdfefd;
+    border-radius: 30px;
+    outline: none;
+    background: #333;
+    border: none;
+    cursor: pointer;
+    font-family: 'Satisfy', cursive;
+
+}
+
+.submit:hover {
+	background-color: #3571da;
+	color: #f23f45;
+	font-family: 'Knewave', cursive;
+	box-shadow: 0 2px 35px 4px rgba(243, 243, 243, 0.55);
+}
+  </style>
+
+    <div class="sigin">
+        <div class="box">
+            <h1>Sign Up</h1>
+            <!-- Start Form -->
+            <form class="form1">
+                <!-- Start UserName -->
+                <p>UserName</p>
+                <input type="text" name="username" required="">
+                <!-- End UserName -->
+                <!-- Start Full Name -->
+                <p>Full Name</p>
+                <input type="text" name="fullname" required="">
+
+                <!-- End Full Name -->
+                <!-- Start Password -->
+                <p>Password</p>
+                <input type="password" name="password" required="">
+                <!-- End Password -->
+                <!-- Start Email -->
+                <p>Email</p>
+                <input type="email" name="email" required="">
+                <!-- End Email -->
+                <!-- Start Submit -->
+                <br>
+                <input class="submit" type="submit" value="Next">
+            </form>
+            <!-- End Form -->
+        </div>
+    </div>
+</body>
+</html>
