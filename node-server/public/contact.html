@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images.unsplash.com/photo-1653289755854-a41949e96282?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #content {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: rgba(239, 232, 232, 0.8); /* Add some transparency to the background */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #564caf;
+            color: rgb(162, 115, 115);
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #5c70c7;
+        }
+
+        /* Стили для заголовка Navbar */
+.section-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: #2B3044;
+}
+
+.section-header h3 {
+  font: 400 18px "Montserrat", sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  margin-right: auto;
+  margin-left: auto; 
+  max-width: 600px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px; /* Добавленный отступ снизу */
+  margin-left: auto;
+}
+
+nav a {
+  position: relative; /* Устанавливаем позицию для псевдоэлемента */
+  color: #20496a;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+nav a::before {
+  content: '\f007'; /* Юникод символ иконки (пример: Font Awesome) */
+  font-family: 'Font Awesome'; /* Название шрифта для иконки */
+  font-size: 18px; /* Размер иконки */
+  margin-right: 5px; /* Отступ между иконкой и текстом */
+}
+
+nav a:hover {
+  color: #ffcc00;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #ffffff;
+}</style>
+    <script> 
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbxWRi-1_OXkyywy2hwF6PQYPmtJ7nkWajR0CH6CNJL6uqyyc5WZg4-nMW5r3zIR9MO6/exec'
+  
+      document.addEventListener('DOMContentLoaded', function() {
+          const form = document.forms['contact-form'];
+  
+          form.addEventListener('submit', function(e) {
+              e.preventDefault();
+    
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                  .then(response => {
+                      const successMessage = document.createElement('div');
+                      successMessage.textContent = "Thank you! Your form is submitted successfully.";
+                      successMessage.style.padding = '10px';
+                      successMessage.style.backgroundColor = '#4CAF50';
+                      successMessage.style.color = 'white';
+                      successMessage.style.borderRadius = '5px';
+                      successMessage.style.marginBottom = '10px';
+    
+                      form.insertAdjacentElement('afterend', successMessage);
+    
+                      form.reset();
+          
+                      setTimeout(() => {
+                          successMessage.remove();
+                      }, 5000);
+                  })
+                  .catch(error => console.error('Error!', error.message));
+          });
+      });
+  
+      function goBack() {
+          window.history.back();
+      }
+      </script>
+</head>
+<body>
+    <div id="content">
+        <h1>Contact Us</h1>
+        <h3> If you have any questions or issues, please reach out to our customer support. <br>
+          </h3>
+          <form method="post" action="" name="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" name="Name" placeholder="Name">
+
+            <label for="email">Email:</label>
+            <input type="email" name="Email" placeholder="Email">
+
+            <label for="message">Message:</label>
+            <textarea name="Message" rows="7" placeholder="Your Message"></textarea>
+            
+            <button type="button" onclick="goBack()">Back</button>
+            <button type="submit" value="Submit" id="submit">Submit</button><br>
+            <p></p>
+                  </form>
+    </div>    
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Blog-styles.css">
+    <title>Review Site</title>
+</head>
+<body>
+    <div class="review-form-container">
+        <h1>Write a Review</h1>
+        <form id="reviewForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+
+            <label for="reviewText">Review Text:</label>
+            <textarea id="reviewText" rows="4" required></textarea>
+
+            <button type="button" onclick="submitReview()">Submit Review</button>
+        </form>
+    </div>
+
+    <div class="reviews-container" id="reviewsContainer">
+        <!-- Reviews will be dynamically added here using JavaScript -->
+    </div>
+
+    <script>// Загрузка ранее сохраненных отзывов при загрузке страницы
+      document.addEventListener("DOMContentLoaded", loadReviews);
+      
+      function submitReview() {
+          // Получение формы
+          var reviewForm = document.getElementById("reviewForm");
+      
+          // Получение значений из формы
+          var username = reviewForm.elements["username"].value;
+          var reviewText = reviewForm.elements["reviewText"].value;
+      
+          // Создание объекта отзыва
+          var review = {
+              username: username,
+              reviewText: reviewText,
+              time: getCurrentTime()
+          };
+      
+          // Сохранение отзыва в локальное хранилище
+          saveReview(review);
+      
+          // Отображение отзыва на странице
+          displayReview(review);
+      
+          // Очистка формы
+          reviewForm.reset();
+      }
+      
+      function saveReview(review) {
+          // Загрузка ранее сохраненных отзывов
+          var savedReviews = JSON.parse(localStorage.getItem("reviews")) || [];
+      
+          // Добавление нового отзыва
+          savedReviews.push(review);
+      
+          // Сохранение в локальное хранилище
+          localStorage.setItem("reviews", JSON.stringify(savedReviews));
+      }
+      
+      function loadReviews() {
+          // Загрузка ранее сохраненных отзывов
+          var savedReviews = JSON.parse(localStorage.getItem("reviews")) || [];
+      
+          // Отображение отзывов на странице
+          savedReviews.forEach(displayReview);
+      }
+      
+      function displayReview(review) {
+          // Создание элемента отзыва
+          var reviewsContainer = document.getElementById("reviewsContainer");
+          var reviewElement = document.createElement("div");
+          reviewElement.classList.add("review");
+      
+          // Добавление содержимого к элементу отзыва
+          reviewElement.innerHTML = `
+              <p><strong>Username:</strong> ${review.username}</p>
+              <p><strong>Review Text:</strong> ${review.reviewText}</p>
+              <p><strong>Time:</strong> ${review.time}</p>
+          `;
+      
+          // Добавление отзыва на страницу
+          reviewsContainer.appendChild(reviewElement);
+      }
+      
+      function getCurrentTime() {
+          var now = new Date();
+          var hours = now.getHours();
+          var minutes = now.getMinutes();
+      
+          // Добавление ведущего нуля, если необходимо
+          hours = (hours < 10) ? "0" + hours : hours;
+          minutes = (minutes < 10) ? "0" + minutes : minutes;
+      
+          return hours + ":" + minutes;
+      }
+      </script>
+    <style>body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+      background-image: url ("https://images.unsplash.com/photo-1604787558127-07c8ae9b06ee?q=80&w=1889&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  }
+  
+  .review-form-container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .review-form-container h1 {
+      margin-bottom: 20px;
+  }
+  
+  .review-form-container label {
+      display: block;
+      margin-bottom: 5px;
+  }
+  
+  .review-form-container input,
+  .review-form-container textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+  }
+  
+  .review-form-container button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 3px;
+  }
+  
+  .review-form-container button:hover {
+      background-color: #45a049;
+  }
+  
+  .reviews-container {
+      max-width: 600px;
+      margin: 20px auto;
+  }
+  
+  .review {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #fff;
+  }
+  
+  .review p {
+      margin: 0;
+  }
+  </style>
+  <script></script>
+</body>
+</html>
